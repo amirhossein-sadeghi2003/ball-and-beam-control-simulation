@@ -123,6 +123,11 @@ Run the simulation:
 
 python src/simulate_ball_beam.py
 
+
+## Documentation
+
+- [Model and Control Notes](docs/model_and_control.md)
+
 ## Future Hardware Direction
 
 A future hardware version of this project may use:
