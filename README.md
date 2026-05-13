@@ -216,6 +216,17 @@ This future version would extend the project from simulation into a real cyber-p
 
 This project is intentionally structured as a bridge between simulation and hardware. The simulation includes practical elements such as actuator saturation, measurement noise, and disturbance response because real control systems are affected by physical constraints, noisy measurements, and external perturbations.
 
+## Key Engineering Takeaways
+
+- Feedback control performance depends strongly on controller structure and gain tuning.
+- Derivative action significantly improved tracking compared with proportional-only control.
+- A tuned PD controller outperformed the baseline PID controller in this simplified setup.
+- More complex controllers are not automatically better; performance must be evaluated with metrics.
+- Actuator saturation, measurement noise, and disturbance response are important even in simulation.
+- This project provides a simulation foundation for a future hardware ball-and-beam control system.
+
 ## Current Status
 
-Initial PID-based ball-and-beam simulation is implemented, results are generated, and the repository is ready for further documentation and model refinement.
+Simulation phase complete.
+
+The project currently includes a baseline PID simulation, P/PD/PID controller comparison, PD gain tuning, performance metrics, response plots, and model/control documentation. Future work should focus on hardware implementation only after the required mechanical and electronic components are available.
