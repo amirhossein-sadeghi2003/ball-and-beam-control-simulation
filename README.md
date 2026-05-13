@@ -76,6 +76,29 @@ The larger maximum error occurs mainly during setpoint transitions and disturban
 
 ![Disturbance Response](results/disturbance_response.png)
 
+
+## Controller Comparison
+
+In addition to the baseline PID simulation, this project compares three feedback controllers under the same setpoint profile, measurement noise, actuator saturation, and disturbance condition:
+
+- P controller
+- PD controller
+- PID controller
+
+The comparison shows that derivative action significantly improves tracking performance compared with proportional-only control. In this simplified simulation, the PD controller performs slightly better than the PID controller, suggesting that the integral term is not always beneficial for this specific dynamic model and tuning setup.
+
+| Controller | RMSE (m) | Mean Absolute Error (m) | Max Absolute Error (m) | Mean Abs Control (deg) |
+|---|---:|---:|---:|---:|
+| PD | 0.0503 | 0.0265 | 0.1965 | 9.0994 |
+| PID | 0.0511 | 0.0268 | 0.1996 | 9.0981 |
+| P | 0.1269 | 0.0965 | 0.3203 | 8.4911 |
+
+### Controller Comparison Plots
+
+![Controller Comparison Tracking](results/controller_comparison_tracking.png)
+
+![Controller Comparison Error](results/controller_comparison_error.png)
+
 ## Generated Files
 
 The simulation generates:
@@ -86,6 +109,10 @@ The simulation generates:
 - results/tracking_error.png
 - results/control_signal.png
 - results/disturbance_response.png
+- results/controller_comparison.csv
+- results/controller_comparison_timeseries.csv
+- results/controller_comparison_tracking.png
+- results/controller_comparison_error.png
 
 ## Project Structure
 
@@ -99,6 +126,10 @@ ball-and-beam-control-simulation/
   - tracking_error.png
   - control_signal.png
   - disturbance_response.png
+  - controller_comparison.csv
+  - controller_comparison_timeseries.csv
+  - controller_comparison_tracking.png
+  - controller_comparison_error.png
 - docs/
 - README.md
 - requirements.txt

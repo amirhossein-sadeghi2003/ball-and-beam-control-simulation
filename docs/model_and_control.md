@@ -164,3 +164,37 @@ The future hardware version may include:
 - Python plotting scripts for analyzing real response
 
 This simulation provides the control logic and analysis foundation for that future implementation.
+
+## 12. Controller Comparison Experiment
+
+A controller comparison experiment was added to compare P, PD, and PID controllers under the same simulation conditions.
+
+The experiment uses:
+
+- the same setpoint profile
+- the same measurement noise level
+- the same actuator saturation limit
+- the same temporary disturbance interval
+- the same simplified ball-and-beam dynamics
+
+The compared controllers are:
+
+- P: proportional control only
+- PD: proportional and derivative control
+- PID: proportional, integral, and derivative control
+
+The resulting performance metrics are:
+
+| Controller | RMSE (m) | Mean Absolute Error (m) | Max Absolute Error (m) | Mean Abs Control (deg) |
+|---|---:|---:|---:|---:|
+| PD | 0.0503 | 0.0265 | 0.1965 | 9.0994 |
+| PID | 0.0511 | 0.0268 | 0.1996 | 9.0981 |
+| P | 0.1269 | 0.0965 | 0.3203 | 8.4911 |
+
+The P controller has the weakest tracking performance because it reacts only to the current position error. It does not directly damp the velocity-like behavior of the ball, so the response has larger tracking error.
+
+The PD controller improves performance by adding derivative action. The derivative term helps damp the response and reduces overshoot during setpoint transitions.
+
+The PID controller performs similarly to the PD controller, but slightly worse in this particular simulation. This suggests that integral action is not automatically beneficial. In this setup, the system is dominated by transient setpoint changes and actuator saturation, so the integral term can slightly increase error instead of improving it.
+
+This result is useful from an engineering perspective because it shows that controller selection should be based on system behavior and measured performance, not only on the assumption that a more complex controller is always better.
