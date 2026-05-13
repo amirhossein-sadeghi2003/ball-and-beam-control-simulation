@@ -198,3 +198,44 @@ The PD controller improves performance by adding derivative action. The derivati
 The PID controller performs similarly to the PD controller, but slightly worse in this particular simulation. This suggests that integral action is not automatically beneficial. In this setup, the system is dominated by transient setpoint changes and actuator saturation, so the integral term can slightly increase error instead of improving it.
 
 This result is useful from an engineering perspective because it shows that controller selection should be based on system behavior and measured performance, not only on the assumption that a more complex controller is always better.
+
+## 13. PD Gain Tuning Experiment
+
+A PD tuning experiment was performed to study how controller gains affect tracking performance.
+
+The experiment evaluated multiple combinations of:
+
+- proportional gain Kp
+- derivative gain Kd
+
+Each gain pair was tested under the same simulation conditions:
+
+- same setpoint profile
+- same measurement noise
+- same disturbance interval
+- same actuator saturation
+- same simplified dynamics model
+
+The best tested gain combination was:
+
+- Kp = 4.5
+- Kd = 1.2
+
+Its performance metrics were:
+
+- RMSE = 0.0449 m
+- Mean absolute error = 0.0238 m
+- Max absolute error = 0.1958 m
+- Mean absolute control effort = 9.1989 deg
+
+This tuned PD controller performed better than the previously selected baseline PD controller and slightly better than the baseline PID controller used earlier in the project.
+
+This result is useful because it shows that controller tuning has a measurable impact on performance, and that a well-tuned PD controller can outperform a more complex controller in a specific application.
+
+From an engineering perspective, this reinforces an important lesson:
+
+- controller complexity alone does not guarantee better performance
+- gains must be tuned for the system and operating conditions
+- performance should be evaluated using quantitative metrics rather than assumptions
+
+The tuning experiment also adds stronger evidence that this project is not just a simulation demo, but a control-analysis project with comparative evaluation and parameter exploration.

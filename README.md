@@ -99,6 +99,38 @@ The comparison shows that derivative action significantly improves tracking perf
 
 ![Controller Comparison Error](results/controller_comparison_error.png)
 
+
+## PD Controller Tuning
+
+A PD tuning experiment was performed to explore how different proportional and derivative gains affect tracking performance.
+
+The experiment evaluated a grid of Kp and Kd values under the same simulation conditions:
+
+- identical setpoint profile
+- identical measurement noise
+- identical actuator saturation
+- identical temporary disturbance
+- identical simplified ball-and-beam dynamics
+
+The best tested PD controller achieved:
+
+| Parameter | Value |
+|---|---:|
+| Kp | 4.5 |
+| Kd | 1.2 |
+| RMSE | 0.0449 m |
+| Mean Absolute Error | 0.0238 m |
+| Max Absolute Error | 0.1958 m |
+| Mean Abs Control Effort | 9.1989 deg |
+
+This tuned PD controller outperformed the previous baseline PD and PID configurations in this simulation setup.
+
+### Tuning Plots
+
+![PD Tuning RMSE Heatmap](results/pd_tuning_rmse_heatmap.png)
+
+![Best PD Response](results/pd_tuning_best_response.png)
+
 ## Generated Files
 
 The simulation generates:
@@ -113,6 +145,10 @@ The simulation generates:
 - results/controller_comparison_timeseries.csv
 - results/controller_comparison_tracking.png
 - results/controller_comparison_error.png
+- results/pd_tuning_results.csv
+- results/pd_tuning_best_response.csv
+- results/pd_tuning_rmse_heatmap.png
+- results/pd_tuning_best_response.png
 
 ## Project Structure
 
@@ -130,6 +166,10 @@ ball-and-beam-control-simulation/
   - controller_comparison_timeseries.csv
   - controller_comparison_tracking.png
   - controller_comparison_error.png
+  - pd_tuning_results.csv
+  - pd_tuning_best_response.csv
+  - pd_tuning_rmse_heatmap.png
+  - pd_tuning_best_response.png
 - docs/
 - README.md
 - requirements.txt
